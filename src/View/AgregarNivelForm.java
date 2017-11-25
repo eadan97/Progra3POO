@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package View;
 
 /**
  *
@@ -42,17 +42,27 @@ public class AgregarNivelForm extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Agregar Nivel");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Cant. Residencias:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Tipo Nivel:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Cant Zonas Comunes:");
 
+        btnAgregarNivel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregarNivel.setText("Agregar Nivel");
 
+        btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
 
+        boxTipoNivel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         boxTipoNivel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comercial", "Residencial" }));
+
+        txtCantResidencias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        txtCantZonas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +89,7 @@ public class AgregarNivelForm extends javax.swing.JFrame {
                         .addComponent(btnAgregarNivel)
                         .addGap(105, 105, 105)
                         .addComponent(btnCancelar)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +112,7 @@ public class AgregarNivelForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarNivel)
                     .addComponent(btnCancelar))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package View;
 
 /**
  *
@@ -33,15 +33,7 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnDescargar = new javax.swing.JButton();
-        MenuAdmin = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,42 +84,8 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu1.setText("Agentes");
-
-        jMenuItem1.setText("Agregar Agente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("Consultar Agentes");
-        jMenu1.add(jMenuItem2);
-
-        MenuAdmin.add(jMenu1);
-
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setText("Clientes");
-
-        jMenuItem3.setText("Consultar Clientes");
-        jMenu2.add(jMenuItem3);
-
-        MenuAdmin.add(jMenu2);
-
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu3.setText("Opciones");
-
-        jMenuItem4.setText("Mi Perfil");
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setText("Cerrar Sesion");
-        jMenu3.add(jMenuItem5);
-
-        MenuAdmin.add(jMenu3);
-
-        setJMenuBar(MenuAdmin);
+        btnVolver.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnVolver.setText("Volver");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,10 +99,12 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnConsultar)
-                                .addGap(168, 168, 168)
+                                .addGap(86, 86, 86)
                                 .addComponent(btnLimpiar)
-                                .addGap(130, 130, 130)
-                                .addComponent(btnDescargar))))
+                                .addGap(41, 41, 41)
+                                .addComponent(btnDescargar)
+                                .addGap(67, 67, 67)
+                                .addComponent(btnVolver))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(270, 270, 270)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -159,18 +119,15 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultar)
                     .addComponent(btnLimpiar)
-                    .addComponent(btnDescargar))
+                    .addComponent(btnDescargar)
+                    .addComponent(btnVolver))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnDescargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescargarActionPerformed
         // TODO add your handling code here:
@@ -212,19 +169,11 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar MenuAdmin;
     public javax.swing.JButton btnConsultar;
     public javax.swing.JButton btnDescargar;
     public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnVolver;
     public javax.swing.JLabel jLabel1;
-    public javax.swing.JMenu jMenu1;
-    public javax.swing.JMenu jMenu2;
-    public javax.swing.JMenu jMenu3;
-    public javax.swing.JMenuItem jMenuItem1;
-    public javax.swing.JMenuItem jMenuItem2;
-    public javax.swing.JMenuItem jMenuItem3;
-    public javax.swing.JMenuItem jMenuItem4;
-    public javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
