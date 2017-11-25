@@ -13,9 +13,9 @@ public class Interes {
     @XmlElement
     private String comentario;
     @XmlElement
-    private String IDBien;
+    private String idBien;
     @XmlElement
-    private String IDinteres;
+    private String idInteres;
 
     private static int contador=0;
 
@@ -23,8 +23,8 @@ public class Interes {
         nombre=namae;
         numTel=tel;
         comentario=comentary;
-        IDBien=idBien;
-        IDinteres="IN"+String.valueOf(contador);
+        this.idBien =idBien;
+        idInteres ="IN"+String.valueOf(contador);
         contador++;
     }
 
@@ -58,20 +58,20 @@ public class Interes {
         this.comentario = comentario;
     }
 
-    public String getIDBien() {
-        return IDBien;
+    public String getIdBien() {
+        return idBien;
     }
 
-    public void setIDBien(String IDBien) {
-        this.IDBien = IDBien;
+    public void setIdBien(String idBien) {
+        this.idBien = idBien;
     }
 
-    public String getIDinteres() {
-        return IDinteres;
+    public String getIdInteres() {
+        return idInteres;
     }
 
-    public void setIDinteres(String IDinteres) {
-        this.IDinteres = IDinteres;
+    public void setIdInteres(String idInteres) {
+        this.idInteres = idInteres;
     }
 
     public static int getContador() {
@@ -86,7 +86,7 @@ public class Interes {
         String s="";
         s+=this.getNombre()+"\n";
         s+=this.getNumTel()+"\n";
-        s+=this.getIDBien()+"\n";
+        s+=this.getIdBien()+"\n";
         return s;
     }
 }
