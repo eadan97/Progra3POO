@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vistas;
+package View;
 
 /**
  *
@@ -28,96 +28,71 @@ public class AgenteMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        MenuAdmin = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        btnAgregarPropiedad = new javax.swing.JButton();
+        btnModificarPropiedad = new javax.swing.JButton();
+        btnConsultarPropiedad = new javax.swing.JButton();
+        ConsultarInteresados = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Bienvenido Agente");
 
-        jLabel2.setText("mostrar algo al agente?");
+        btnAgregarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAgregarPropiedad.setText("Agregar Propiedad");
 
-        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu1.setText("Propiedades");
+        btnModificarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnModificarPropiedad.setText("Modificar Propiedad");
 
-        jMenuItem1.setText("Agregar  Propiedad");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
+        btnConsultarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnConsultarPropiedad.setText("Consultar Propiedad");
 
-        jMenuItem6.setText("Modificar Propiedad");
-        jMenu1.add(jMenuItem6);
+        ConsultarInteresados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ConsultarInteresados.setText("Consultar Interesados");
 
-        jMenuItem2.setText("Consultar Propiedad");
-        jMenuItem2.setToolTipText("");
-        jMenu1.add(jMenuItem2);
-
-        MenuAdmin.add(jMenu1);
-
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setText("Clientes");
-
-        jMenuItem3.setText("Consultar Interesados");
-        jMenu2.add(jMenuItem3);
-
-        MenuAdmin.add(jMenu2);
-
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu3.setText("Opciones");
-
-        jMenuItem4.setText("Principal");
-        jMenu3.add(jMenuItem4);
-
-        jMenuItem5.setText("Cerrar Sesion");
-        jMenu3.add(jMenuItem5);
-
-        MenuAdmin.add(jMenu3);
-
-        setJMenuBar(MenuAdmin);
+        btnCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCerrarSesion.setText("Cerrar Sesion");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(206, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(245, 245, 245))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnModificarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ConsultarInteresados)
+                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(50, 50, 50)
+                .addComponent(btnAgregarPropiedad)
+                .addGap(29, 29, 29)
+                .addComponent(btnModificarPropiedad)
+                .addGap(29, 29, 29)
+                .addComponent(btnConsultarPropiedad)
+                .addGap(33, 33, 33)
+                .addComponent(ConsultarInteresados)
+                .addGap(18, 18, 18)
+                .addComponent(btnCerrarSesion)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,17 +130,11 @@ public class AgenteMainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar MenuAdmin;
+    public javax.swing.JButton ConsultarInteresados;
+    public javax.swing.JButton btnAgregarPropiedad;
+    public javax.swing.JButton btnCerrarSesion;
+    public javax.swing.JButton btnConsultarPropiedad;
+    public javax.swing.JButton btnModificarPropiedad;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    public javax.swing.JMenu jMenu1;
-    public javax.swing.JMenu jMenu2;
-    public javax.swing.JMenu jMenu3;
-    public javax.swing.JMenuItem jMenuItem1;
-    public javax.swing.JMenuItem jMenuItem2;
-    public javax.swing.JMenuItem jMenuItem3;
-    public javax.swing.JMenuItem jMenuItem4;
-    public javax.swing.JMenuItem jMenuItem5;
-    public javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

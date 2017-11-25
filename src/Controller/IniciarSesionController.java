@@ -2,12 +2,20 @@ package Controller;
 
 import Cliente.ServerQueryHandler;
 import View.IniciarSesionForm;
+import View.AdminMainForm;
+import View.AgenteMainForm;
+import View.ClienteMainForm;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class IniciarSesionController implements ActionListener{
     public IniciarSesionForm vista;
+    public AdminMainForm adminVista;
+    public AgenteMainForm agenteVista;
+    public ClienteMainForm clienteVista;
+    
     ServerQueryHandler serverQueryHandler;
 
     public IniciarSesionController(IniciarSesionForm iniciarSesionForm, ServerQueryHandler serverQueryHandler) {
