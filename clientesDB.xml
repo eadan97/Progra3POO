@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clientes static="2">
+    <cliente>
+        <idUsuario>cliente0</idUsuario>
+        <nombre>asd asd</nombre>
+        <correo>tareasitcr@gmail.com</correo>
+        <contrasenia>dI8Pps</contrasenia>
+        <telefono>9687</telefono>
+    </cliente>
+    <cliente>
+        <idUsuario>cliente1</idUsuario>
+        <nombre>sadds dsds</nombre>
+        <correo>tareasitcr@gmail.com</correo>
+        <contrasenia>jYpH8E</contrasenia>
+        <telefono>564654</telefono>
+    </cliente>
+</clientes>

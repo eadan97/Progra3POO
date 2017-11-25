@@ -1,5 +1,8 @@
 package Server;
 
+import Model.Agente;
+import Model.Bien;
+import Model.Cliente;
 import Model.Mensaje;
 import Util.TipoMensaje;
 
@@ -19,6 +22,7 @@ public class ServerSocketHandler {
     ObjectOutputStream salida;
     ObjectInputStream entrada;
     boolean isServerAbierto=false;
+    private EnviarCorreoHandle enviarCorreoHandle=EnviarCorreoHandle.getInstance();
 
     public ServerSocketHandler(String serverIP, int serverPort) {
         this.serverIP=serverIP;
@@ -90,8 +94,51 @@ public class ServerSocketHandler {
 
     private void procesarConexion() throws IOException, ClassNotFoundException {
         Mensaje mensaje = leerMensaje();
+        Mensaje res;
 
         switch (mensaje.getTipoMensaje()) {
+            case AGREGARAGENTE:
+                res = new Mensaje(TipoMensaje.AGREGARAGENTE, "Agente registrado");
+                Agente nuevo = (Agente) mensaje.getDato1();
+                nuevo.generarIDusuario();
+                Server.agentes.add(nuevo);
+
+                enviarCorreoHandle.enviarCorreo(nuevo.getCorreo(), "Cuenta creada", "Contrasena es: "+nuevo.getContrasenia());
+                System.out.println("Agente creado: \n"+nuevo+"\n");
+
+                enviarMensaje(res);
+                break;
+
+            case CONSULTARAGENTES:
+                res = new Mensaje(TipoMensaje.CONSULTARAGENTES, Server.agentes.getLista());
+
+                System.out.println("Agentes consultados: \n"+Server.agentes.getLista().size()+"\n");
+
+                enviarMensaje(res);
+                break;
+
+            case CONSULTARCLIENTES:
+                res = new Mensaje(TipoMensaje.CONSULTARCLIENTES, Server.clientes.getLista());
+                System.out.println("Clientes consultados: \n"+Server.clientes.getLista().size()+"\n");
+                enviarMensaje(res);
+                //todo: hacer csv
+                break;
+
+            case REGISTRARBIEN:
+                res = new Mensaje(TipoMensaje.AGREGARAGENTE, "Agente registrado");
+                Bien nuevoBien = (Bien) mensaje.getDato2();
+                for (Agente a:Server.agentes.getLista()) {
+                    if(a.getIdUsuario().compareTo((String) mensaje.getDato1())==0){
+                        a.bienes.add(nuevoBien);
+                        System.out.println("Bien agregado a: \n"+a.getIdUsuario()+"\n");
+                        break;
+                    }
+                }
+                enviarMensaje(res);
+                break;
+            case MODIFICARBIEN:
+                break;
+
             case CERRARSERVER:
                 cerrarConexion();
                 terminarServidor();
@@ -99,8 +146,18 @@ public class ServerSocketHandler {
 
             case LOGIN:
                 System.out.println("Verificando credenciales");
-                mensaje = new Mensaje(TipoMensaje.LOGIN, "Login OK");
-                enviarMensaje(mensaje);
+                res= new Mensaje(TipoMensaje.LOGIN, null);
+                for (Cliente u : Server.clientes.getLista())
+                    if(u.getIdUsuario().compareTo((String) mensaje.getDato1())==0&&u.getContrasenia().compareTo((String) mensaje.getDato2())==0)
+                        res= new Mensaje(TipoMensaje.LOGIN,  "Usuario");
+                /*todo: agente for (ClienteSocket u : Server.clientes.getLista())
+                    if(u.getIdUsuario().compareTo(mensaje.getDato1())==0&&u.getContrasenia().compareTo(mensaje.getDato2())==0)
+                        res= new Mensaje(TipoMensaje.LOGIN, "Login OK");
+                */
+                if(Server.admin.getIdUsuario().compareTo((String) mensaje.getDato1())==0
+                        &&Server.admin.getContrasenia().compareTo((String) mensaje.getDato2())==0)
+                    res= new Mensaje(TipoMensaje.LOGIN,  "Admin");
+                enviarMensaje(res);
                 break;
 
             default:

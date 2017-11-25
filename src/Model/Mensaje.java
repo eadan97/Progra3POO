@@ -2,21 +2,42 @@ package Model;
 
 import Util.TipoMensaje;
 
-public class Mensaje {
+import java.io.Serializable;
+
+public class Mensaje implements Serializable {
     TipoMensaje tipoMensaje;
-    String mensaje;
+    Object dato1;
+    Object dato2;
 
-    public Mensaje(TipoMensaje tipoMensaje, String mensaje) {
+    public Mensaje(TipoMensaje tipoMensaje, Object dato1, Object dato2) {
+        this.tipoMensaje = tipoMensaje;
+        this.dato1 = dato1;
+        this.dato2 = dato2;
+    }
+
+    public Mensaje() {
+
+    }
+
+    public Object getDato2() {
+        return dato2;
+    }
+
+    public void setDato2(Object pDato2) {
+        dato2 = pDato2;
+    }
+
+    public Mensaje(TipoMensaje tipoMensaje, Object dato1) {
         setTipoMensaje(tipoMensaje);
-        setMensaje(mensaje);
+        setDato1(dato1);
     }
 
-    public String getMensaje() {
-        return mensaje;
+    public Object getDato1() {
+        return dato1;
     }
 
-    public void setMensaje(String pMensaje) {
-        mensaje = pMensaje;
+    public void setDato1(Object pMensaje) {
+        dato1 = pMensaje;
     }
 
     public TipoMensaje getTipoMensaje() {
