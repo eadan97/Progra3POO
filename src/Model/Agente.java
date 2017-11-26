@@ -4,11 +4,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @XmlRootElement(name = "agente")
 @XmlType(propOrder = {"idUsuario", "nombre", "correo", "contrasenia", "numeroTel", "bienes"})
-public class Agente extends Usuario {
+public class Agente extends Usuario implements Serializable {
 
     public static int contador=0;
     private String numeroTel;
@@ -24,7 +25,6 @@ public class Agente extends Usuario {
         nombre=pNombre;
         bienes=new ArrayList<>();
         this.generarClave();
-        generarIDusuario();
     }
 
     public Agente(){
@@ -81,8 +81,8 @@ public class Agente extends Usuario {
         this.apellido = apellido;
     }
 
-    public void generarIDusuario() {
-        this.setIdUsuario("agente"+nombre+apellido);
+    public void generarIDusuario(int numero) {
+        this.setIdUsuario("agente"+numero);
     }
 
     public void anadirBien(Bien bien) {
@@ -121,7 +121,7 @@ public class Agente extends Usuario {
 
     public String consultarInteresados(String idBien) {
         Bien bien=seleccionarBien(idBien);
-        ArrayList<Interes> interesados;
+        ArrayList<Interesado> interesados;
         interesados=bien.getInteresados();
         String s="";
         for(int i=0;i>interesados.size();i++){
@@ -138,4 +138,11 @@ public class Agente extends Usuario {
         return s;
     }
 
+    public Bien getBien(int dato2) {
+        for (Bien b:bienes) {
+            if (b.getNumeroFinca()==dato2)
+                    return b;
+        }
+        return null;
+    }
 }

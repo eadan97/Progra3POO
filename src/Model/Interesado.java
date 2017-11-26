@@ -2,9 +2,10 @@ package Model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
-@XmlRootElement(name = "Interes")
-public class Interes {
+@XmlRootElement(name = "Interesado")
+public class Interesado implements Serializable{
 
     @XmlElement
     private String nombre;
@@ -19,7 +20,7 @@ public class Interes {
 
     private static int contador=0;
 
-    public Interes(String namae, String tel, String comentary, String idBien){
+    public Interesado(String namae, String tel, String comentary, String idBien){
         nombre=namae;
         numTel=tel;
         comentario=comentary;
@@ -79,7 +80,7 @@ public class Interes {
     }
 
     public static void setContador(int contador) {
-        Interes.contador = contador;
+        Interesado.contador = contador;
     }
 
     public String toString(){

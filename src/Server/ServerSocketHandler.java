@@ -1,17 +1,17 @@
 package Server;
 
-import Model.Agente;
-import Model.Bien;
-import Model.Cliente;
-import Model.Mensaje;
+import Model.*;
 import Util.TipoMensaje;
+import Util.Utils;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerSocketHandler {
     String serverIP;
@@ -95,21 +95,23 @@ public class ServerSocketHandler {
     private void procesarConexion() throws IOException, ClassNotFoundException {
         Mensaje mensaje = leerMensaje();
         Mensaje res;
-
+        String id;
         switch (mensaje.getTipoMensaje()) {
-            case AGREGARAGENTE:
-                res = new Mensaje(TipoMensaje.AGREGARAGENTE, "Agente registrado");
-                Agente nuevo = (Agente) mensaje.getDato1();
-                nuevo.generarIDusuario();
-                Server.agentes.add(nuevo);
+            case AGREGARAGENTE://id del agente o n ull
+                try {
+                    Agente nuevo = (Agente) mensaje.getDato1();
+                    id= Server.agentes.add(nuevo);
 
-                enviarCorreoHandle.enviarCorreo(nuevo.getCorreo(), "Cuenta creada", "Contrasena es: "+nuevo.getContrasenia());
-                System.out.println("Agente creado: \n"+nuevo+"\n");
-
+                    enviarCorreoHandle.enviarCorreo(nuevo.getCorreo(), "Cuenta creada", "Contrasena es: " + nuevo.getContrasenia());
+                    res = new Mensaje(TipoMensaje.AGREGARAGENTE, id);
+                    System.out.println("Agente creado: \n" + nuevo + "\n");
+                }catch (Exception e){
+                    res = new Mensaje(TipoMensaje.AGREGARAGENTE, null);
+                }
                 enviarMensaje(res);
                 break;
 
-            case CONSULTARAGENTES:
+            case CONSULTARAGENTES: //retorna ArrayList<Agente> en dato 1
                 res = new Mensaje(TipoMensaje.CONSULTARAGENTES, Server.agentes.getLista());
 
                 System.out.println("Agentes consultados: \n"+Server.agentes.getLista().size()+"\n");
@@ -117,27 +119,65 @@ public class ServerSocketHandler {
                 enviarMensaje(res);
                 break;
 
-            case CONSULTARCLIENTES:
+            case CONSULTARCLIENTES://retorna ArrayList<Ciente> en dato 1
                 res = new Mensaje(TipoMensaje.CONSULTARCLIENTES, Server.clientes.getLista());
                 System.out.println("Clientes consultados: \n"+Server.clientes.getLista().size()+"\n");
                 enviarMensaje(res);
                 //todo: hacer csv
                 break;
 
-            case REGISTRARBIEN:
-                res = new Mensaje(TipoMensaje.AGREGARAGENTE, "Agente registrado");
-                Bien nuevoBien = (Bien) mensaje.getDato2();
-                for (Agente a:Server.agentes.getLista()) {
-                    if(a.getIdUsuario().compareTo((String) mensaje.getDato1())==0){
+            case REGISTRARBIEN: //retorna true o false
+                res = new Mensaje(TipoMensaje.AGREGARAGENTE, false);
+                try {
+                    Bien nuevoBien = (Bien) mensaje.getDato2();
+                    Agente a=Server.agentes.getAgente((String) mensaje.getDato1());
+                    if(a!=null){
                         a.bienes.add(nuevoBien);
+                        res = new Mensaje(TipoMensaje.AGREGARAGENTE, true);
                         System.out.println("Bien agregado a: \n"+a.getIdUsuario()+"\n");
-                        break;
                     }
+                }catch (Exception e){
+                    System.out.println("Error al guardar el bien");
                 }
                 enviarMensaje(res);
                 break;
             case MODIFICARBIEN:
+                //todo: hacer
                 break;
+            case CONSULTARBIENESAGENTE://Debe recibir en dato 1 el id del agente... devulve arraylist de bienes
+                res = new Mensaje(TipoMensaje.CONSULTARBIENESAGENTE, Server.agentes.getAgente((String) mensaje.getDato1()).bienes);
+                System.out.println("Bienes consultados: \n"+Server.agentes.getAgente((String) mensaje.getDato1()).bienes.size()+"\n");
+                enviarMensaje(res);
+                break;
+            case ELIMINARBIEN:
+                //todo: hacer eliminarBien
+                break;
+            case CONSULTARPROSPECTOS://recibir idagente y idbien envia lista de interesado
+                try {
+                    res = new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, Server.agentes.getAgente((String) mensaje.getDato1()).getBien((int) mensaje.getDato2()).getInteresados());
+                }catch (NullPointerException e){
+                    res= new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, new ArrayList<Interesado>());
+                }
+                System.out.println("Bienes consultados: \n"+((ArrayList)res.getDato1()).size()+"\n");
+                enviarMensaje(res);
+                break;
+            case CONSULTARBIENESCLIENTE:
+                res = new Mensaje(TipoMensaje.CONSULTARBIENESCLIENTE, Server.agentes.getTodosLosBienes());
+                System.out.println("Bienes consultados: \n"+Server.agentes.getTodosLosBienes().size()+"\n");
+                enviarMensaje(res);
+                break;
+            case SOLICITARFICHAPROPIEDAD://recibe correo y propiedad
+                res = new Mensaje(TipoMensaje.SOLICITARFICHAPROPIEDAD, false);
+                for (Agente a: Server.agentes.getLista()
+                     ) {
+                    if (a.bienes.contains((Bien)mensaje.getDato2())){
+                        Utils.generarQr(a);
+                        EnviarCorreoHandle.getInstance().enviarCorreo((String)mensaje.getDato1(),"Ficha de propiedad",);
+                    }
+
+                }
+                break;
+
 
             case CERRARSERVER:
                 cerrarConexion();
@@ -149,7 +189,7 @@ public class ServerSocketHandler {
                 res= new Mensaje(TipoMensaje.LOGIN, null);
                 for (Cliente u : Server.clientes.getLista())
                     if(u.getIdUsuario().compareTo((String) mensaje.getDato1())==0&&u.getContrasenia().compareTo((String) mensaje.getDato2())==0)
-                        res= new Mensaje(TipoMensaje.LOGIN,  "Usuario");
+                        res= new Mensaje(TipoMensaje.LOGIN,  "Cliente");
                 /*todo: agente for (ClienteSocket u : Server.clientes.getLista())
                     if(u.getIdUsuario().compareTo(mensaje.getDato1())==0&&u.getContrasenia().compareTo(mensaje.getDato2())==0)
                         res= new Mensaje(TipoMensaje.LOGIN, "Login OK");

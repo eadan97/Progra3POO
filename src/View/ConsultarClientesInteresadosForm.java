@@ -53,7 +53,7 @@ public class ConsultarClientesInteresadosForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Telefono", "Fecha Interes"
+                "ID", "Nombre", "Apellido", "Telefono", "Fecha Interesado"
             }
         ));
         jTable1.getTableHeader().setReorderingAllowed(false);

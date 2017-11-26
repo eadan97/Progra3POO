@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<clientes static="2">
+<clientes>
     <cliente>
         <idUsuario>cliente0</idUsuario>
         <nombre>asd asd</nombre>
