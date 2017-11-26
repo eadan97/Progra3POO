@@ -6,12 +6,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 @XmlRootElement(name = "cliente")
 @XmlType(propOrder = {"idUsuario", "nombre", "correo", "contrasenia", "numeroTel"})
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements Serializable {
 
-    public static int contador=0;
     private String nombre;
     private String numeroTel;
 
@@ -19,7 +19,6 @@ public class Cliente extends Usuario {
         this.nombre =nombre;
         this.numeroTel =numeroTel;
         this.setCorreo(correo);
-        generarIDusuario();
         this.generarClave();
     }
     public Cliente(){
@@ -39,15 +38,6 @@ public class Cliente extends Usuario {
         nombre = pNombre;
     }
 
-    @XmlTransient
-    public int getContador() {
-        return contador;
-    }
-
-    public void setContador(int pContador) {
-        contador = pContador;
-    }
-
     @XmlElement (name="telefono")
     public String getNumeroTel() {
         return numeroTel;
@@ -65,13 +55,12 @@ public class Cliente extends Usuario {
     public void descargarFichaBien() {
         //falta esto
     }
-    public void mostrarInteres(ArrayList<Interes> intereses,String bien,String comentario) {
-        intereses.add(new Interes(this.nombre,this.numeroTel,comentario,bien));
+    public void mostrarInteres(ArrayList<Interesado> intereses,String bien,String comentario) {
+        intereses.add(new Interesado(this.nombre,this.numeroTel,comentario,bien));
     }*/
 
-    public void generarIDusuario(){
-        this.setIdUsuario("cliente"+getContador());
-        setContador(getContador()+1);
+    public void generarIDusuario(int numero){
+        this.setIdUsuario("cliente"+numero);
     }
 
     public String toString(){

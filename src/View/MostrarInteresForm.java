@@ -36,13 +36,13 @@ public class MostrarInteresForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Mostrar Interes");
+        jLabel1.setText("Mostrar Interesado");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Comentario:");
 
         btnMostrarInteres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnMostrarInteres.setText("Mostrar Interes");
+        btnMostrarInteres.setText("Mostrar Interesado");
 
         btnCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");

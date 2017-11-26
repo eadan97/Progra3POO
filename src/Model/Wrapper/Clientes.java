@@ -17,8 +17,6 @@ import java.util.Objects;
 
 @XmlRootElement(name = "clientes")
 public class Clientes {
-    @XmlAttribute (name = "static")
-    private int staticToSave=0;
 
     private static ArrayList<Cliente> lista=new ArrayList<>();
 
@@ -38,25 +36,9 @@ public class Clientes {
      * @param cliente cliente a añadir.
      */
     public void add(Cliente cliente){
-        if (!verificarCarnet(cliente.getIdUsuario())){
-            lista.add(cliente);
-            staticToSave= Cliente.contador;
-            saveInXML();
-        }
-    }
-
-    /**
-     * Verifica si el cliente se encuentra en la lista.
-     * @param clienteVerificado Carnet del cliente que se busca en la lista.
-     * @return Booleano: Está en la lista?
-     */
-    public boolean verificarCarnet(String clienteVerificado){
-        for (Cliente clienteVerificar:
-                getLista()) {
-            if (Objects.equals(clienteVerificado, clienteVerificar.getIdUsuario()))
-                return true;
-        }
-        return false;
+        cliente.generarIDusuario(lista.size()+1);
+        lista.add(cliente);
+        saveInXML();
     }
 
     /**
@@ -90,7 +72,6 @@ public class Clientes {
 
             Clientes clientes = (Clientes) jaxbUnmarshaller.unmarshal( file );
             setLista(clientes.getLista());
-            staticToSave=clientes.staticToSave;
         }catch (Exception e){
             saveInXML();
         }

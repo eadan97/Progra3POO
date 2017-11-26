@@ -73,7 +73,7 @@ public class ConsultasClientesForm extends javax.swing.JFrame {
         btnSolicitarFicha.setEnabled(false);
 
         btnMostrarInteres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnMostrarInteres.setText("Mostrar Interes");
+        btnMostrarInteres.setText("Mostrar Interesado");
         btnMostrarInteres.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

@@ -2,11 +2,11 @@ package Model;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 import java.util.*;
 
 @XmlRootElement(name = "agente")
-public abstract class Bien {
+public abstract class Bien implements Serializable {
 
     @XmlElement
     private int numeroFinca;
@@ -30,15 +30,15 @@ public abstract class Bien {
     private String estado;
 
     @XmlElement(name="interes")
-    private ArrayList<Interes> interesados;
+    private ArrayList<Interesado> interesados;
     public static int contador=0;
 
     public void setImagenes(ArrayList<String> pImagenes) {
         imagenes = pImagenes;
     }
 
-    public String getNumeroFinca() {
-        return String.valueOf(numeroFinca);
+    public int getNumeroFinca() {
+        return numeroFinca;
     }
 
     public void setNumeroFinca(int numeroFinca) {
@@ -89,11 +89,11 @@ public abstract class Bien {
         this.estado = estado;
     }
 
-    public ArrayList<Interes> getInteresados() {
+    public ArrayList<Interesado> getInteresados() {
         return interesados;
     }
 
-    public void setInteresados(ArrayList<Interes> interesados) {
+    public void setInteresados(ArrayList<Interesado> interesados) {
         this.interesados = interesados;
     }
 

@@ -1,6 +1,7 @@
 package Model.Wrapper;
 
 import Model.Agente;
+import Model.Bien;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -17,8 +18,6 @@ import java.util.Objects;
 @XmlRootElement(name = "agentes")
 public class Agentes {
 
-    @XmlAttribute(name = "static")
-    private int staticToSave=0;
 
     private static ArrayList<Agente> lista=new ArrayList<>();
 
@@ -37,12 +36,11 @@ public class Agentes {
      * Añade un agente a la lista de agentes.
      * @param agente agente a añadir.
      */
-    public void add(Agente agente){
-        if (!verificarCarnet(agente.getIdUsuario())){
-            lista.add(agente);
-            staticToSave= Agente.contador;
-            saveInXML();
-        }
+    public String add(Agente agente){
+        agente.generarIDusuario(lista.size()+1);
+        lista.add(agente);
+        saveInXML();
+        return agente.getIdUsuario();
     }
 
     /**
@@ -90,10 +88,24 @@ public class Agentes {
 
             Agentes agentes = (Agentes) jaxbUnmarshaller.unmarshal( file );
             setLista(agentes.getLista());
-            staticToSave=agentes.staticToSave;
         }catch (Exception e){
             saveInXML();
         }
     }
-    
+
+    public Agente getAgente(String dato1) {
+        for (Agente a: lista) {
+            if(a.getIdUsuario()==dato1)
+                return a;
+        }
+        return null;
+    }
+
+    public ArrayList<Bien> getTodosLosBienes() {
+        ArrayList<Bien> res = new ArrayList<>();
+        for (Agente a:
+             lista)
+            res.addAll(a.bienes);
+        return res;
+    }
 }
