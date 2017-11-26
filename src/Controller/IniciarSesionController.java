@@ -5,6 +5,7 @@ import View.IniciarSesionForm;
 import View.AdminMainForm;
 import View.AgenteMainForm;
 import View.ClienteMainForm;
+import Controller.*;
 
 
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ public class IniciarSesionController implements ActionListener{
     public ClienteMainForm clienteVista;
     
     ServerQueryHandler serverQueryHandler;
+   
 
     public IniciarSesionController(IniciarSesionForm iniciarSesionForm, ServerQueryHandler serverQueryHandler) {
         vista=iniciarSesionForm;
@@ -32,9 +34,29 @@ public class IniciarSesionController implements ActionListener{
                 String inicio=serverQueryHandler.iniciarSesion(vista.txtCorreo.getText(),
                         new String(vista.txtPassword.getPassword()));
                 System.out.println(inicio);
-
+                //ir a cada vista
+                switch(inicio){
+                    case "Admin":
+                        vista.setVisible(false);
+                        AdminMainController adminMainController=new AdminMainController(new AdminMainForm(), serverQueryHandler,vista);
+                        adminMainController.vista.setVisible(true);
+                        adminMainController.vista.setLocationRelativeTo(null);
+                        break;
+                    case "Agente":
+//                        vista.setVisible(false);
+//                        AgenteMainController agenteMainController=new AgenteMainController(new AgenteMainForm(),serverQueryHandler,vista);
+ //  falta                     agenteMainController.vista.setVisible(true);
+ //                       agenteMainController.vista.setLocationRelativeTo(null);
+                        break;
+                    case "Cliente":
+//                        vista.setVisible(false);
+//                        ClienteMainController clienteMainController=new ClienteMainController(new ClienteMainForm(),serverQueryHandler,vista);
+//        falta                clienteMainController.vista.setVisible(true);
+//                        clienteMainController.vista.setLocationRelativeTo(null);
+                        break;
+                            
+                }
                 //todo:si es error, mostrar mensaje
-                //todo: segun usuario, ir a esa vista
                 break;
             case "Cancelar":
                 System.exit(0);

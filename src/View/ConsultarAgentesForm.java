@@ -17,7 +17,12 @@ public class ConsultarAgentesForm extends javax.swing.JFrame {
     public ConsultarAgentesForm() {
         initComponents();
     }
-
+    
+    public void cerrarConsultaAgente(AdminMainForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,9 +166,11 @@ public class ConsultarAgentesForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnConsultar;
     public javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnVolver;
+    public javax.swing.JButton btnVolver;
     public javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
