@@ -191,12 +191,12 @@ public class AgregarAgenteForm extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel lbApellido;
     public javax.swing.JLabel lbEmail;
-    public javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbID;
     public javax.swing.JLabel lbNombre;
     public javax.swing.JLabel lbTelefono;
     public javax.swing.JTextField txtApellidoAgente;
     public javax.swing.JTextField txtEmail;
-    public javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtID;
     public javax.swing.JTextField txtNombreAgente;
     public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
