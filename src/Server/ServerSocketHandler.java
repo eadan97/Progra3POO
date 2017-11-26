@@ -229,10 +229,9 @@ public class ServerSocketHandler {
                 for (Cliente u : Server.clientes.getLista())
                     if(u.getIdUsuario().compareTo((String) mensaje.getDato1())==0&&u.getContrasenia().compareTo((String) mensaje.getDato2())==0)
                         res= new Mensaje(TipoMensaje.LOGIN,  "Cliente");
-                /*todo: agente for (ClienteSocket u : Server.clientes.getLista())
-                    if(u.getIdUsuario().compareTo(mensaje.getDato1())==0&&u.getContrasenia().compareTo(mensaje.getDato2())==0)
-                        res= new Mensaje(TipoMensaje.LOGIN, "Login OK");
-                */
+                for (Agente u : Server.agentes.getLista())
+                    if(u.getIdUsuario().compareTo((String) mensaje.getDato1())==0&&u.getContrasenia().compareTo((String) mensaje.getDato2())==0)
+                        res= new Mensaje(TipoMensaje.LOGIN, "Agente");
                 if(Server.admin.getIdUsuario().compareTo((String) mensaje.getDato1())==0
                         &&Server.admin.getContrasenia().compareTo((String) mensaje.getDato2())==0)
                     res= new Mensaje(TipoMensaje.LOGIN,  "Admin");
