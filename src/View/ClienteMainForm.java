@@ -17,7 +17,11 @@ public class ClienteMainForm extends javax.swing.JFrame {
     public ClienteMainForm() {
         initComponents();
     }
-
+    
+    void abrirVistaAnterior(ClienteMainForm vistaAnterior) {
+        vistaAnterior.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,4 +116,6 @@ public class ClienteMainForm extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarPropiedades;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

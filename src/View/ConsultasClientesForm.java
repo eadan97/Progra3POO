@@ -17,7 +17,16 @@ public class ConsultasClientesForm extends javax.swing.JFrame {
     public ConsultasClientesForm() {
         initComponents();
     }
-
+    
+    public void cerrarConsultasClientes(ClienteMainForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
+    void abrirVistaAnterior(ConsultasClientesForm vistaAnterior) {
+        vistaAnterior.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +82,7 @@ public class ConsultasClientesForm extends javax.swing.JFrame {
         btnSolicitarFicha.setEnabled(false);
 
         btnMostrarInteres.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnMostrarInteres.setText("Mostrar Interesado");
+        btnMostrarInteres.setText("Mostrar Interes");
         btnMostrarInteres.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -106,7 +115,8 @@ public class ConsultasClientesForm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSolicitarFicha)
                                 .addGap(90, 90, 90)
-                                .addComponent(btnMostrarInteres))
+                                .addComponent(btnMostrarInteres, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(boxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(130, 130, 130)
@@ -195,4 +205,8 @@ public class ConsultasClientesForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtDato;
     public javax.swing.JTextField txtIDPropiedad;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    
 }
