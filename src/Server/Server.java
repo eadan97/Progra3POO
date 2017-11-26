@@ -5,7 +5,7 @@ import Model.Wrapper.Agentes;
 import Model.Wrapper.Clientes;
 
 public class Server{
-    static String serverIP="192.168.1.3";
+    static String serverIP="192.168.1.6";
     static int serverPort=6969;
 
     static Clientes clientes=new Clientes();

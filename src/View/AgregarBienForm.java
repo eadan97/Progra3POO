@@ -9,15 +9,21 @@ package View;
  *
  * @author isfa9
  */
-public class AgregarPropiedadGeneralForm extends javax.swing.JFrame {
+public class AgregarBienForm extends javax.swing.JFrame {
 
     /**
      * Creates new form AgregarPropiedadGeneralForm
      */
-    public AgregarPropiedadGeneralForm() {
+    public AgregarBienForm() {
         initComponents();
     }
-
+    
+    public void cerrarAgregarBien(AgenteMainForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -237,14 +243,22 @@ public class AgregarPropiedadGeneralForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarPropiedadGeneralForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBienForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarPropiedadGeneralForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBienForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarPropiedadGeneralForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBienForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarPropiedadGeneralForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarBienForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -257,7 +271,7 @@ public class AgregarPropiedadGeneralForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarPropiedadGeneralForm().setVisible(true);
+                new AgregarBienForm().setVisible(true);
             }
         });
     }
@@ -284,4 +298,6 @@ public class AgregarPropiedadGeneralForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtValorFiscal;
     public javax.swing.JTextField txtValorMetrocuadrado;
     // End of variables declaration//GEN-END:variables
+
+    
 }

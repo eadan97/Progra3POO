@@ -51,9 +51,9 @@ public class ClienteMainForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(btnConsultarPropiedades)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
                 .addComponent(btnCerrarSesion)
                 .addGap(121, 121, 121))
         );
@@ -66,7 +66,7 @@ public class ClienteMainForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultarPropiedades)
                     .addComponent(btnCerrarSesion))
-                .addContainerGap(299, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
 
         pack();
