@@ -10,7 +10,7 @@ public class ServerQueryHandler {
     ClienteSocket cliente;
 
     public ServerQueryHandler() {
-        this.cliente = new ClienteSocket("192.168.1.3", 6969);
+        this.cliente = new ClienteSocket("192.168.1.6", 6969);
     }
 
     public String iniciarSesion(String usuario, String clave) {
@@ -31,4 +31,5 @@ public class ServerQueryHandler {
         catch (IOException e) {System.out.println(e);}
         return null;
     }
+    
 }

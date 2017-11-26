@@ -43,10 +43,10 @@ public class IniciarSesionController implements ActionListener{
                         adminMainController.vista.setLocationRelativeTo(null);
                         break;
                     case "Agente":
-//                        vista.setVisible(false);
-//                        AgenteMainController agenteMainController=new AgenteMainController(new AgenteMainForm(),serverQueryHandler,vista);
- //  falta                     agenteMainController.vista.setVisible(true);
- //                       agenteMainController.vista.setLocationRelativeTo(null);
+                        vista.setVisible(false);
+                        AgenteMainController agenteMainController=new AgenteMainController(new AgenteMainForm(),serverQueryHandler,vista);
+                        agenteMainController.vista.setVisible(true);
+                        agenteMainController.vista.setLocationRelativeTo(null);
                         break;
                     case "Cliente":
 //                        vista.setVisible(false);

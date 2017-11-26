@@ -17,7 +17,10 @@ public class AgenteMainForm extends javax.swing.JFrame {
     public AgenteMainForm() {
         initComponents();
     }
-
+    
+    void abrirVistaAnterior(AgenteMainForm vistaAnterior) {
+        vistaAnterior.setVisible(true); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,9 +32,8 @@ public class AgenteMainForm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnAgregarPropiedad = new javax.swing.JButton();
-        btnModificarPropiedad = new javax.swing.JButton();
         btnConsultarPropiedad = new javax.swing.JButton();
-        ConsultarInteresados = new javax.swing.JButton();
+        btnConsultarInteresados = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,14 +44,11 @@ public class AgenteMainForm extends javax.swing.JFrame {
         btnAgregarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAgregarPropiedad.setText("Agregar Propiedad");
 
-        btnModificarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnModificarPropiedad.setText("Modificar Propiedad");
-
         btnConsultarPropiedad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnConsultarPropiedad.setText("Consultar Propiedad");
 
-        ConsultarInteresados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ConsultarInteresados.setText("Consultar Interesados");
+        btnConsultarInteresados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnConsultarInteresados.setText("Consultar Interesados");
 
         btnCerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesion");
@@ -59,36 +58,34 @@ public class AgenteMainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnModificarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnConsultarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ConsultarInteresados)
-                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(272, Short.MAX_VALUE))
+                    .addComponent(btnAgregarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarInteresados))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnConsultarPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(136, 136, 136))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addComponent(btnAgregarPropiedad)
-                .addGap(29, 29, 29)
-                .addComponent(btnModificarPropiedad)
-                .addGap(29, 29, 29)
-                .addComponent(btnConsultarPropiedad)
-                .addGap(33, 33, 33)
-                .addComponent(ConsultarInteresados)
-                .addGap(18, 18, 18)
-                .addComponent(btnCerrarSesion)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarPropiedad)
+                    .addComponent(btnConsultarPropiedad))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConsultarInteresados)
+                    .addComponent(btnCerrarSesion))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,11 +127,12 @@ public class AgenteMainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton ConsultarInteresados;
     public javax.swing.JButton btnAgregarPropiedad;
     public javax.swing.JButton btnCerrarSesion;
+    public javax.swing.JButton btnConsultarInteresados;
     public javax.swing.JButton btnConsultarPropiedad;
-    public javax.swing.JButton btnModificarPropiedad;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
