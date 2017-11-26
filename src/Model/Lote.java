@@ -1,10 +1,12 @@
 package Model;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 
-public class PropiedadLote extends Bien {
+@XmlRootElement(name = "lote")
+public class Lote extends Bien {
 
-    public PropiedadLote(double areaT, String dir, String modalidad, double valor) {
+    public Lote(double areaT, String dir, String modalidad, double valor) {
         this.setAreaTerreno(areaT);
         this.setDireccion(dir);
         this.setEstado(modalidad);
@@ -13,8 +15,8 @@ public class PropiedadLote extends Bien {
         this.setInteresados(new ArrayList<>());
     }
     
-    public String printo(){
+    public String toString(){
         return "Tipo: Lote \n";
-    }
+    }//Todo: mas info
 
 }

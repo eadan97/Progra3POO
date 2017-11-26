@@ -1,6 +1,7 @@
 package Server;
 
 import Model.*;
+import Model.Wrapper.Agentes;
 import Util.TipoMensaje;
 import Util.Utils;
 
@@ -132,6 +133,8 @@ public class ServerSocketHandler {
                     Bien nuevoBien = (Bien) mensaje.getDato2();
                     Agente a=Server.agentes.getAgente((String) mensaje.getDato1());
                     if(a!=null){
+                        nuevoBien.setNumeroFinca(Agentes.bienes+1);
+                        Agentes.bienes+=1;
                         a.bienes.add(nuevoBien);
                         res = new Mensaje(TipoMensaje.AGREGARAGENTE, true);
                         Server.agentes.saveInXML();

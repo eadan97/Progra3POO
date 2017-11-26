@@ -11,7 +11,6 @@ import java.util.ArrayList;
 @XmlType(propOrder = {"idUsuario", "nombre", "correo", "contrasenia", "numeroTel", "bienes"})
 public class Agente extends Usuario implements Serializable {
 
-    public static int contador=0;
     private String numeroTel;
     private String nombre;
     private String apellido;
@@ -34,15 +33,6 @@ public class Agente extends Usuario implements Serializable {
         bienes=new ArrayList<>();
         this.setContrasenia("");
         this.setIdUsuario("");
-    }
-
-    @XmlTransient
-    public static int getContador() {
-        return contador;
-    }
-
-    public static void setContador(int pContador) {
-        contador = pContador;
     }
 
     @XmlElement(name = "bienes")
