@@ -18,7 +18,9 @@ import java.util.Objects;
 @XmlRootElement(name = "agentes")
 public class Agentes {
 
-
+    @XmlAttribute(name="bienes")
+    public static int bienes;
+    private int psBienes;
     private static ArrayList<Agente> lista=new ArrayList<>();
 
     @XmlElement(name = "agente")
@@ -39,6 +41,7 @@ public class Agentes {
     public String add(Agente agente){
         agente.generarIDusuario(lista.size()+1);
         lista.add(agente);
+        bienes=psBienes;
         saveInXML();
         return agente.getIdUsuario();
     }
@@ -77,18 +80,20 @@ public class Agentes {
 
     /**
      * Carga de un XML la lista de agentes.
+     *
      * @throws JAXBException
      */
     public void loadFromXML() {
-        try{
-            File file = new File( "agentesDB.xml" );
-            JAXBContext jaxbContext = JAXBContext.newInstance( Agentes.class );
+        try {
+            File file = new File("agentesDB.xml");
+            JAXBContext jaxbContext = JAXBContext.newInstance(Agentes.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            Agentes agentes = (Agentes) jaxbUnmarshaller.unmarshal( file );
+            Agentes agentes = (Agentes) jaxbUnmarshaller.unmarshal(file);
             setLista(agentes.getLista());
-        }catch (Exception e){
+            bienes = agentes.psBienes;
+        } catch (Exception e) {
             saveInXML();
         }
     }
@@ -108,4 +113,5 @@ public class Agentes {
             res.addAll(a.bienes);
         return res;
     }
+
 }

@@ -134,6 +134,7 @@ public class ServerSocketHandler {
                     if(a!=null){
                         a.bienes.add(nuevoBien);
                         res = new Mensaje(TipoMensaje.AGREGARAGENTE, true);
+                        Server.agentes.saveInXML();
                         System.out.println("Bien agregado a: \n"+a.getIdUsuario()+"\n");
                     }
                 }catch (Exception e){
@@ -149,8 +150,18 @@ public class ServerSocketHandler {
                 System.out.println("Bienes consultados: \n"+Server.agentes.getAgente((String) mensaje.getDato1()).bienes.size()+"\n");
                 enviarMensaje(res);
                 break;
-            case ELIMINARBIEN:
-                //todo: hacer eliminarBien
+            case ELIMINARBIEN://recibe bienid
+                res = new Mensaje(TipoMensaje.MOSTRARINTERES, false);
+                for (Agente a: Server.agentes.getLista()) {
+                    Bien bien=a.getBien((int)mensaje.getDato1());
+                    if (bien!=null){
+                        a.bienes.remove(bien);
+                        res = new Mensaje(TipoMensaje.MOSTRARINTERES, true);
+                        Server.agentes.saveInXML();
+                        System.out.println("Se elimino un bien");
+                    }
+                }
+                enviarMensaje(res);
                 break;
             case CONSULTARPROSPECTOS://recibir idagente y idbien envia lista de cliente
                 try {
@@ -164,6 +175,7 @@ public class ServerSocketHandler {
             case CONSULTARBIENESCLIENTE:
                 res = new Mensaje(TipoMensaje.CONSULTARBIENESCLIENTE, Server.agentes.getTodosLosBienes());
                 System.out.println("Bienes consultados: \n"+Server.agentes.getTodosLosBienes().size()+"\n");
+                System.out.println("Se consulto un bien");
                 enviarMensaje(res);
                 break;
             case SOLICITARFICHAPROPIEDAD://recibe correo y propiedad envia bool
@@ -180,6 +192,8 @@ public class ServerSocketHandler {
                                 Utils.bienToHtml(bien),
                                 imagenes);
                         res = new Mensaje(TipoMensaje.SOLICITARFICHAPROPIEDAD, true);
+                        System.out.println("Se solicito ficha de propiedad");
+
                     }
                 }
                 enviarMensaje(res);
@@ -194,6 +208,8 @@ public class ServerSocketHandler {
                         interesados.add((Cliente)mensaje.getDato1());
                         bien.setInteresados(interesados);
                         res = new Mensaje(TipoMensaje.MOSTRARINTERES, true);
+                        Server.agentes.saveInXML();
+                        System.out.println("Se mostro un nuevo interes");
                     }
                 }
                 enviarMensaje(res);
