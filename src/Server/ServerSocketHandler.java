@@ -172,7 +172,7 @@ public class ServerSocketHandler {
                      ) {
                     if (a.bienes.contains((Bien)mensaje.getDato2())){
                         Utils.generarQr(a);
-                        EnviarCorreoHandle.getInstance().enviarCorreo((String)mensaje.getDato1(),"Ficha de propiedad",);
+                        EnviarCorreoHandle.getInstance().enviarCorreoHtml();
                     }
 
                 }
