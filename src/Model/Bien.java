@@ -24,16 +24,15 @@ public abstract class Bien implements Serializable {
     private String direccion;
 
     @XmlElement
-    private ArrayList<String> imagenes;//despues
+    private ArrayList<byte[]> imagenes;//despues
 
     @XmlElement
     private String estado;
 
-    @XmlElement(name="interes")
-    private ArrayList<Interesado> interesados;
-    public static int contador=0;
+    @XmlElement(name="interesados")
+    private ArrayList<Cliente> interesados;
 
-    public void setImagenes(ArrayList<String> pImagenes) {
+    public void setImagenes(ArrayList<byte[]> pImagenes) {
         imagenes = pImagenes;
     }
 
@@ -89,37 +88,19 @@ public abstract class Bien implements Serializable {
         this.estado = estado;
     }
 
-    public ArrayList<Interesado> getInteresados() {
+    public ArrayList<Cliente> getInteresados() {
         return interesados;
     }
 
-    public void setInteresados(ArrayList<Interesado> interesados) {
+    public void setInteresados(ArrayList<Cliente> interesados) {
         this.interesados = interesados;
     }
-
-    public static int getContador() {
-        return contador;
-    }
-
-    public static void setContador(int contador) {
-        Bien.contador = contador;
-    }
-
-    public void anadirImagenes() {
-    }//despues
-
-    public void borrarimg() {
-    }//despues
-
-    public void generarQR() {
-    }//despues
 
     public String toString(){
         String s="";
         s+="Area del terreno: " +this.getAreaTerreno()+"\n";
         s+="Direccion: "+ this.getDireccion()+"\n";
         s+="Valor: "+this.getValorFiscal()+"\n";
-        s+="Agente: "+"\n";
         s+="Interesados: "+interesados.size();
         return s;
     }

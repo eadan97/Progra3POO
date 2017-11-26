@@ -152,11 +152,11 @@ public class ServerSocketHandler {
             case ELIMINARBIEN:
                 //todo: hacer eliminarBien
                 break;
-            case CONSULTARPROSPECTOS://recibir idagente y idbien envia lista de interesado
+            case CONSULTARPROSPECTOS://recibir idagente y idbien envia lista de cliente
                 try {
                     res = new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, Server.agentes.getAgente((String) mensaje.getDato1()).getBien((int) mensaje.getDato2()).getInteresados());
                 }catch (NullPointerException e){
-                    res= new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, new ArrayList<Interesado>());
+                    res= new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, new ArrayList<Cliente>());
                 }
                 System.out.println("Bienes consultados: \n"+((ArrayList)res.getDato1()).size()+"\n");
                 enviarMensaje(res);
@@ -166,18 +166,38 @@ public class ServerSocketHandler {
                 System.out.println("Bienes consultados: \n"+Server.agentes.getTodosLosBienes().size()+"\n");
                 enviarMensaje(res);
                 break;
-            case SOLICITARFICHAPROPIEDAD://recibe correo y propiedad
+            case SOLICITARFICHAPROPIEDAD://recibe correo y propiedad envia bool
                 res = new Mensaje(TipoMensaje.SOLICITARFICHAPROPIEDAD, false);
                 for (Agente a: Server.agentes.getLista()
                      ) {
-                    if (a.bienes.contains((Bien)mensaje.getDato2())){
-                        Utils.generarQr(a);
-                        EnviarCorreoHandle.getInstance().enviarCorreoHtml();
+                    Bien bien=a.getBien((int)mensaje.getDato2());
+                    if (bien!=null){
+                        ArrayList<byte[]>imagenes = new ArrayList<byte[]>();
+                        imagenes.add(Utils.generarQr(a));
+                        imagenes.addAll(bien.getImagenes());
+                        EnviarCorreoHandle.getInstance().enviarCorreoHtml((String) mensaje.getDato1(),
+                                "Ficha de propiedad",
+                                Utils.bienToHtml(bien),
+                                imagenes);
+                        res = new Mensaje(TipoMensaje.SOLICITARFICHAPROPIEDAD, true);
                     }
-
                 }
+                enviarMensaje(res);
                 break;
-
+            case MOSTRARINTERES: //recibe usuario y propiedad
+                res = new Mensaje(TipoMensaje.MOSTRARINTERES, false);
+                for (Agente a: Server.agentes.getLista()
+                        ) {
+                    Bien bien=a.getBien((int)mensaje.getDato2());
+                    if (bien!=null){
+                        ArrayList interesados =bien.getInteresados();
+                        interesados.add((Cliente)mensaje.getDato1());
+                        bien.setInteresados(interesados);
+                        res = new Mensaje(TipoMensaje.MOSTRARINTERES, true);
+                    }
+                }
+                enviarMensaje(res);
+                break;
 
             case CERRARSERVER:
                 cerrarConexion();

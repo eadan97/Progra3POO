@@ -1,6 +1,7 @@
 package Util;
 
 import Model.Agente;
+import Model.Bien;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
@@ -11,13 +12,14 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
 
 public class Utils {
-    public static void generarQr(Agente agente){
+    public static byte[] generarQr(Agente agente){
         String filePath = "/temp.png";
         int size = 250;
         String fileType = "png";
@@ -50,11 +52,19 @@ public class Utils {
                     }
                 }
             }
-            ImageIO.write(image, fileType, myFile);
+            return ((DataBufferByte) image.getData().getDataBuffer()).getData();
         } catch (WriterException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        return null;
+    }
+
+    public static String bienToHtml(Bien bien) {
+        String s="";
+        s+="<p>"+"Area del terreno: " +bien.getAreaTerreno()+"</p>";
+        s+="<p>"+"Direccion: "+ bien.getDireccion()+"</p>";
+        s+="<p>"+"Valor: "+bien.getValorFiscal()+"</p>";
+        //todo: mas info pls
+        return s;
     }
 }
