@@ -5,7 +5,7 @@ import Model.Wrapper.Agentes;
 import Model.Wrapper.Clientes;
 
 public class Server{
-    static String serverIP="192.168.1.6";
+    static String serverIP="192.168.1.3";
     static int serverPort=6969;
 
     static Clientes clientes=new Clientes();
@@ -18,6 +18,7 @@ public class Server{
         System.out.println("Iniciando servidor...");
 
         clientes.loadFromXML();
+        agentes.loadFromXML();
 
         new EnviarCorreoHandle("smtp.gmail.com", "587", "tareasitcr@gmail.com","TareasITCR2017");
         new LeerCorreoThread("pop.gmail.com","995","tareasitcr@gmail.com","TareasITCR2017");

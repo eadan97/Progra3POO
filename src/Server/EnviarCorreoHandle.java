@@ -18,6 +18,7 @@ public class EnviarCorreoHandle extends Thread {
     String server, puerto, user, pass;
 
 
+
     public EnviarCorreoHandle(String server, String puerto, String user, String pass){
         this.server=server;
         this.puerto=puerto;
@@ -25,6 +26,7 @@ public class EnviarCorreoHandle extends Thread {
         this.pass=pass;
         instance=this;
     }
+
 
     public static EnviarCorreoHandle getInstance() {
         return instance;

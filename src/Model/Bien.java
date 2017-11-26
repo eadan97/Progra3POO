@@ -9,34 +9,24 @@ import java.util.*;
 @XmlTransient
 public abstract class Bien implements Serializable {
 
-    @XmlElement
     private int numeroFinca;
-
-    @XmlElement
     private double areaTerreno;
-
-    @XmlElement
     private double valorMetroCuadrado;
-
-    @XmlElement
     private double valorFiscal;
-
-    @XmlElement
     private String direccion;
-
-    @XmlElement
     private ArrayList<byte[]> imagenes;//despues
 
-    @XmlElement
+
     private String estado;
 
-    @XmlElement(name="interesados")
+
     private ArrayList<Cliente> interesados;
 
     public void setImagenes(ArrayList<byte[]> pImagenes) {
         imagenes = pImagenes;
     }
 
+    @XmlElement
     public int getNumeroFinca() {
         return numeroFinca;
     }
@@ -45,6 +35,7 @@ public abstract class Bien implements Serializable {
         this.numeroFinca = numeroFinca;
     }
 
+    @XmlElement
     public String getAreaTerreno() {
         return String.valueOf(areaTerreno);
     }
@@ -53,6 +44,7 @@ public abstract class Bien implements Serializable {
         this.areaTerreno = areaTerreno;
     }
 
+    @XmlElement
     public String getValorMetroCuadrado() {
         return String.valueOf(valorMetroCuadrado);
     }
@@ -61,6 +53,7 @@ public abstract class Bien implements Serializable {
         this.valorMetroCuadrado = valorMetroCuadrado;
     }
 
+    @XmlElement
     public String getValorFiscal() {
         return String.valueOf(valorFiscal);
     }
@@ -73,14 +66,16 @@ public abstract class Bien implements Serializable {
         return direccion;
     }
 
+    @XmlElement
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    @XmlElement
     public ArrayList getImagenes() {
         return imagenes;
     }
 
+    @XmlElement
     public String getEstado() {
         return estado;
     }
@@ -89,6 +84,7 @@ public abstract class Bien implements Serializable {
         this.estado = estado;
     }
 
+    @XmlElement(name="cliente")
     public ArrayList<Cliente> getInteresados() {
         return interesados;
     }

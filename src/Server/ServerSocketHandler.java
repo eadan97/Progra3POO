@@ -8,7 +8,6 @@ import Util.Utils;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class ServerSocketHandler {
     String serverIP;
     int serverPort;
-    int cantidadDeConecciones;
+    int cantidadDeConecciones=10;
     ServerSocket serverSocket;
     Socket conexion;
     ObjectOutputStream salida;
@@ -156,7 +155,7 @@ public class ServerSocketHandler {
             case ELIMINARBIEN://recibe bienid
                 res = new Mensaje(TipoMensaje.MOSTRARINTERES, false);
                 for (Agente a: Server.agentes.getLista()) {
-                    Bien bien=a.getBien((int)mensaje.getDato1());
+                    Bien bien=a.obtenerBien((int)mensaje.getDato1());
                     if (bien!=null){
                         a.bienes.remove(bien);
                         res = new Mensaje(TipoMensaje.MOSTRARINTERES, true);
@@ -168,7 +167,7 @@ public class ServerSocketHandler {
                 break;
             case CONSULTARPROSPECTOS://recibir idagente y idbien envia lista de cliente
                 try {
-                    res = new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, Server.agentes.getAgente((String) mensaje.getDato1()).getBien((int) mensaje.getDato2()).getInteresados());
+                    res = new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, Server.agentes.getAgente((String) mensaje.getDato1()).obtenerBien((int) mensaje.getDato2()).getInteresados());
                 }catch (NullPointerException e){
                     res= new Mensaje(TipoMensaje.CONSULTARPROSPECTOS, new ArrayList<Cliente>());
                 }
@@ -185,7 +184,7 @@ public class ServerSocketHandler {
                 res = new Mensaje(TipoMensaje.SOLICITARFICHAPROPIEDAD, false);
                 for (Agente a: Server.agentes.getLista()
                      ) {
-                    Bien bien=a.getBien((int)mensaje.getDato2());
+                    Bien bien=a.obtenerBien((int)mensaje.getDato2());
                     if (bien!=null){
                         ArrayList<byte[]>imagenes = new ArrayList<byte[]>();
                         imagenes.add(Utils.generarQr(a));
@@ -205,7 +204,7 @@ public class ServerSocketHandler {
                 res = new Mensaje(TipoMensaje.MOSTRARINTERES, false);
                 for (Agente a: Server.agentes.getLista()
                         ) {
-                    Bien bien=a.getBien((int)mensaje.getDato2());
+                    Bien bien=a.obtenerBien((int)mensaje.getDato2());
                     if (bien!=null){
                         ArrayList interesados =bien.getInteresados();
                         interesados.add((Cliente)mensaje.getDato1());

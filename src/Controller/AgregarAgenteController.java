@@ -6,6 +6,7 @@
 package Controller;
 
 import Cliente.ServerQueryHandler;
+import Model.Agente;
 import View.AdminMainForm;
 import View.AgregarAgenteForm;
 
@@ -38,7 +39,16 @@ public class AgregarAgenteController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "Agregar Agente":
-                //funcionAgregarAgente
+                //TODO: hacer validacion
+                String tel=vista.txtTelefono.getText();
+                String nombre=vista.txtNombreAgente.getText();
+                String apellido=vista.txtApellidoAgente.getText();
+                String correo=vista.txtEmail.getText();
+                Agente agente= new Agente(tel, nombre, apellido, correo);
+                agente.setIdUsuario(vista.txtID.getText());
+                String res = serverQueryHandler.agregarAgente(agente);
+                if (res!=null)
+                    cerrarAgregarAgente(vistaAnterior);
                 break;
             case "Cancelar":
                 cerrarAgregarAgente(vistaAnterior);

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 @XmlRootElement(name = "lote")
 public class Lote extends Bien {
 
+    public Lote() {
+    }
+
     public Lote(double areaT, String dir, String modalidad, double valor) {
         this.setAreaTerreno(areaT);
         this.setDireccion(dir);

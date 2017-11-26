@@ -1,19 +1,19 @@
 package Model;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
+import com.sun.xml.internal.txw2.annotation.XmlAttribute;
+
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 @XmlRootElement(name = "agente")
-@XmlType(propOrder = {"idUsuario", "nombre", "correo", "contrasenia", "numeroTel", "bienes"})
 public class Agente extends Usuario implements Serializable {
 
+    private String correo;
     private String numeroTel;
     private String nombre;
     private String apellido;
+    @XmlTransient
     public ArrayList<Bien> bienes;
 
 
@@ -24,9 +24,11 @@ public class Agente extends Usuario implements Serializable {
         nombre=pNombre;
         bienes=new ArrayList<>();
         this.generarClave();
+        this.correo=correo;
     }
 
     public Agente(){
+        correo="";
         this.apellido="";
         this.numeroTel="";
         nombre="";
@@ -35,7 +37,19 @@ public class Agente extends Usuario implements Serializable {
         this.setIdUsuario("");
     }
 
-    @XmlElement(name = "bienes")
+    @XmlElement
+    public String getCorreo() {
+        return correo;
+    }
+
+    @Override
+    public void setCorreo(String pCorreo) {
+        correo = pCorreo;
+    }
+
+    @XmlElements({
+            @XmlElement(name = "lote", type = Lote.class)
+    })
     public ArrayList<Bien> getBienes() {
         return bienes;
     }
@@ -128,7 +142,7 @@ public class Agente extends Usuario implements Serializable {
         return s;
     }
 
-    public Bien getBien(int dato2) {
+    public Bien obtenerBien(int dato2) {
         for (Bien b:bienes) {
             if (b.getNumeroFinca()==dato2)
                     return b;

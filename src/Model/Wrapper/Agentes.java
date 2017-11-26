@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +19,9 @@ import java.util.Objects;
 @XmlRootElement(name = "agentes")
 public class Agentes {
 
-    @XmlAttribute(name="bienes")
+    @XmlTransient
     public static int bienes;
+    @XmlAttribute(name="bienes")
     private int psBienes;
     private static ArrayList<Agente> lista=new ArrayList<>();
 
@@ -39,7 +41,7 @@ public class Agentes {
      * @param agente agente a añadir.
      */
     public String add(Agente agente){
-        agente.generarIDusuario(lista.size()+1);
+        //agente.generarIDusuario(lista.size()+1);
         lista.add(agente);
         bienes=psBienes;
         saveInXML();

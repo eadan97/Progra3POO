@@ -8,10 +8,13 @@ package Controller;
 import Cliente.ServerQueryHandler;
 import View.AdminMainForm;
 import View.ConsultarClientesForm;
+import Model.Cliente;
 
-
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 /**
  *
  * @author isfa9
@@ -19,7 +22,7 @@ import java.awt.event.ActionListener;
 public class ConsultarClienteController  implements ActionListener{
     public ConsultarClientesForm vista;
     public AdminMainForm vistaAnterior;
-    
+    DefaultTableModel model;
     
     ServerQueryHandler serverQueryHandler;
     
@@ -31,6 +34,8 @@ public class ConsultarClienteController  implements ActionListener{
         this.vista.btnLimpiar.addActionListener(this);
         this.vista.btnDescargar.addActionListener(this);
         this.vista.btnVolver.addActionListener(this);
+        model = (DefaultTableModel) vista.jTable1.getModel();
+        vista.jTable1.setModel(model);
     }
            
     //Consultar
@@ -42,10 +47,19 @@ public class ConsultarClienteController  implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "Consultar":
-                //mostrar Datos de tabla
+
+                ArrayList<Cliente> clientes= serverQueryHandler.consultarClientes();
+                for (Cliente s : clientes) {
+                    Object[] o = new Object[6];
+                    o[0] = s.getIdUsuario();
+                    o[1] = s.getNombre();
+                    o[3] = s.getNumeroTel();
+                    o[4] = s.getCorreo();
+                    model.addRow(o);
+                }
                 break;
             case "Limpiar Tabla":
-                //clear table
+                model.setRowCount(0);
                 break;
             case "Descargar Datos": 
                 //descargar csv
