@@ -8,6 +8,7 @@ package Controller;
 import Cliente.ServerQueryHandler;
 import View.AgenteMainForm;
 import View.ConsultarPropiedadAgenteForm;
+import View.ModificarPropiedadForm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,6 +69,10 @@ public class ConsultarPropiedadesAgenteController implements ActionListener{
                 
             case "Modificar":
                 //controlador a modificar propiedad
+                vista.setVisible(false);
+                ModificarPropiedadController mostrarPropiedadController=new ModificarPropiedadController(new ModificarPropiedadForm(),serverQueryHandler,vista);
+                mostrarPropiedadController.vista.setVisible(true);
+                mostrarPropiedadController.vista.setLocationRelativeTo(null);
                 break;
             
             case "Eliminar":

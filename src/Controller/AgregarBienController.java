@@ -8,6 +8,10 @@ package Controller;
 import Cliente.ServerQueryHandler;
 import View.AgenteMainForm;
 import View.AgregarBienForm;
+import View.AgregarCasaForm;
+import View.AgregarComercialForm;
+import View.AgregarEdificioForm;
+import View.AgregarImagenForm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,12 +48,23 @@ public class AgregarBienController implements ActionListener{
                 switch(tipoBien){
                     case "Casa":
                         //con casa
+                        vista.setVisible(false);
+                        AgregarCasaController agregarCasaController=new AgregarCasaController(new AgregarCasaForm(),serverQueryHandler,vistaAnterior);
+                        agregarCasaController.vista.setVisible(true);
+                        agregarCasaController.vista.setLocationRelativeTo(null);
                         break;
                     case "Edificio de Apartamentos":
-                        //con edifi
+                        vista.setVisible(false);
+                        AgregarEdificioController agregarEdificioController=new AgregarEdificioController(new AgregarEdificioForm(),serverQueryHandler,vistaAnterior);
+                        agregarEdificioController.vista.setVisible(true);
+                        agregarEdificioController.vista.setLocationRelativeTo(null);
                         break;
+                        
                     case "Centro Comercial":
-                        //con comer
+                        vista.setVisible(false);
+                        AgregarComercialController agregarComercialController=new AgregarComercialController(new AgregarComercialForm(),serverQueryHandler,vistaAnterior);
+                        agregarComercialController.vista.setVisible(true);
+                        agregarComercialController.vista.setLocationRelativeTo(null);
                         break;
                     case "Lote":
                         //agregarBien/
@@ -57,7 +72,9 @@ public class AgregarBienController implements ActionListener{
                 }
                 break;
             case "Agregar Imagen":
-                //controller agregar imagen
+                AgregarImagenController agregarImagenController=new AgregarImagenController(new AgregarImagenForm(),serverQueryHandler,vista);
+                agregarImagenController.vista.setVisible(true);
+                agregarImagenController.vista.setLocationRelativeTo(null);
                 break;
             case "Cancelar":
                 cerrarAgregarBien(vistaAnterior);

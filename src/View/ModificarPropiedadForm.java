@@ -17,7 +17,12 @@ public class ModificarPropiedadForm extends javax.swing.JFrame {
     public ModificarPropiedadForm() {
         initComponents();
     }
-
+    
+    public void cerrarModificarPro(ConsultarPropiedadAgenteForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,4 +176,6 @@ public class ModificarPropiedadForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtValorFiscal;
     public javax.swing.JTextField txtValorMetroCuadrado;
     // End of variables declaration//GEN-END:variables
+
+   
 }

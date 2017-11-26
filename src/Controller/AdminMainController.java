@@ -58,7 +58,7 @@ public class AdminMainController implements ActionListener{
                 consultarClienteController.vista.setVisible(true);
                 consultarClienteController.vista.setLocationRelativeTo(null);
                 break;              
-            case "Cerrar Cesion":
+            case "Cerrar Sesion":
                 cerrarSesion(vistaAnterior);
                 break;
             default:

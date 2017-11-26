@@ -43,7 +43,7 @@ public class AgenteMainController implements ActionListener{
                 agregarBienController.vista.setVisible(true);
                 agregarBienController.vista.setLocationRelativeTo(null);
                 break;
-            case "Consultar Propiedades":
+            case "Consultar Propiedad":
                 vista.setVisible(false);
                 ConsultarPropiedadesAgenteController consultarPropiedadesAgenteController=new ConsultarPropiedadesAgenteController(new ConsultarPropiedadAgenteForm(),serverQueryHandler,vista);
                 consultarPropiedadesAgenteController.vista.setVisible(true);
@@ -55,7 +55,7 @@ public class AgenteMainController implements ActionListener{
                 consultarInteresadosController.vista.setVisible(true);
                 consultarInteresadosController.vista.setLocationRelativeTo(null);
                 break;              
-            case "Cerrar Cesion":
+            case "Cerrar Sesion":
                 cerrarSesion(vistaAnterior);
                 break;
             default:

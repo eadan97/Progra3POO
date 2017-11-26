@@ -23,6 +23,9 @@ public class ConsultarPropiedadAgenteForm extends javax.swing.JFrame {
         vistaAnterior.abrirVistaAnterior(vistaAnterior);
     }
     
+    void abrirVistaAnterior(ConsultarPropiedadAgenteForm vistaAnterior) {
+        vistaAnterior.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,6 +206,5 @@ public class ConsultarPropiedadAgenteForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtDato;
     public javax.swing.JTextField txtIdBien;
     // End of variables declaration//GEN-END:variables
-
-    
+  
 }

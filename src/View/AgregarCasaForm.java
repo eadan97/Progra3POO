@@ -17,7 +17,13 @@ public class AgregarCasaForm extends javax.swing.JFrame {
     public AgregarCasaForm() {
         initComponents();
     }
-
+    
+    public void cerrarAgregarCasa(AgenteMainForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,4 +194,6 @@ public class AgregarCasaForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtColor;
     public javax.swing.JTextField txtNivel;
     // End of variables declaration//GEN-END:variables
+
+    
 }
