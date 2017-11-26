@@ -21,6 +21,13 @@ public class AgenteMainForm extends javax.swing.JFrame {
     void abrirVistaAnterior(AgenteMainForm vistaAnterior) {
         vistaAnterior.setVisible(true); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void cerrarSesion(IniciarSesionForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -133,6 +140,5 @@ public class AgenteMainForm extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarPropiedad;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
-    
+   
 }

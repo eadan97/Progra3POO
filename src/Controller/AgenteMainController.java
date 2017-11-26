@@ -56,11 +56,15 @@ public class AgenteMainController implements ActionListener{
                 consultarInteresadosController.vista.setLocationRelativeTo(null);
                 break;              
             case "Cerrar Cesion":
-                //cerrarSesion
+                cerrarSesion(vistaAnterior);
                 break;
             default:
                 System.out.println(e.getActionCommand()+" no esta soportado");
         }//To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void cerrarSesion(IniciarSesionForm vistaAnterior) {
+        vista.cerrarSesion(vistaAnterior);
     }
     
 

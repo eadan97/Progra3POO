@@ -17,7 +17,12 @@ public class IniciarSesionForm extends javax.swing.JFrame {
     public IniciarSesionForm() {
         initComponents();
     }
-
+    
+    
+    void abrirVistaAnterior(IniciarSesionForm vistaAnterior) {
+        vistaAnterior.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -159,4 +164,5 @@ public class IniciarSesionForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtCorreo;
     public javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -18,6 +18,11 @@ public class AdminMainForm extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void cerrarSesion(IniciarSesionForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
     public void abrirVistaAnterior(AdminMainForm vistaAnterior){
         vistaAnterior.setVisible(true);
     }
@@ -144,4 +149,6 @@ public class AdminMainForm extends javax.swing.JFrame {
     public javax.swing.JButton btnConsultarCleintes;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    
 }
