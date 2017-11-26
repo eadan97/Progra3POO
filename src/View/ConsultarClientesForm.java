@@ -18,6 +18,12 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public void cerrarConsultarCliente(AdminMainForm vistaAnterior) {
+        this.setVisible(false);
+        vistaAnterior.abrirVistaAnterior(vistaAnterior);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -177,4 +183,6 @@ public class ConsultarClientesForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+   
 }

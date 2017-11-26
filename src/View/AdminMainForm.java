@@ -17,7 +17,11 @@ public class AdminMainForm extends javax.swing.JFrame {
     public AdminMainForm() {
         initComponents();
     }
-
+    
+    public void abrirVistaAnterior(AdminMainForm vistaAnterior){
+        vistaAnterior.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +52,7 @@ public class AdminMainForm extends javax.swing.JFrame {
         });
 
         btnConsultarAgentes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnConsultarAgentes.setText("Consular Agentes");
+        btnConsultarAgentes.setText("Consultar Agentes");
 
         btnConsultarCleintes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnConsultarCleintes.setText("Consultar Clientes");
@@ -67,9 +71,9 @@ public class AdminMainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(115, 115, 115)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnConsultarAgentes, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                    .addComponent(btnAgregarAgente, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarAgentes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnConsultarCleintes, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
