@@ -6,8 +6,9 @@
 package Controller;
 
 import Cliente.ServerQueryHandler;
-import View.AgenteMainForm;
-import View.ConsultarPropiedadAgenteForm;
+import View.ClienteMainForm;
+import View.ConsultasClientesForm;
+import View.MostrarInteresForm;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,27 +17,32 @@ import java.awt.event.ActionListener;
  *
  * @author isfa9
  */
-public class ConsultarPropiedadesAgenteController implements ActionListener{
-    public ConsultarPropiedadAgenteForm vista;
-    public AgenteMainForm vistaAnterior;
+public class ConsultasClientesController implements ActionListener{
+
+    public ConsultasClientesForm vista;
+    public ClienteMainForm vistaAnterior;
     
     
     ServerQueryHandler serverQueryHandler;
     
-    ConsultarPropiedadesAgenteController(ConsultarPropiedadAgenteForm consultarPropiedadAgenteForm, ServerQueryHandler pServerQueryHandler, AgenteMainForm pVistaAnterior) {
-        this.vista=consultarPropiedadAgenteForm;
+    ConsultasClientesController(ConsultasClientesForm consultasClientesForm, ServerQueryHandler pServerQueryHandler, ClienteMainForm pVistaAnterior) {
+        this.vista=consultasClientesForm;
         this.serverQueryHandler=pServerQueryHandler;//To change body of generated methods, choose Tools | Templates.
         this.vistaAnterior=pVistaAnterior;
         this.vista.btnConsultar.addActionListener(this);
         this.vista.btnVolver.addActionListener(this);
-        this.vista.btnModificar.addActionListener(this);
-        this.vista.btnEliminar.addActionListener(this);
+        this.vista.btnSolicitarFicha.addActionListener(this);
+        this.vista.btnMostrarInteres.addActionListener(this);
     }
+    
+    
     
    
     
-    //Consultar Volver
-    //modificar Eliminar
+    //Consultar 
+    //Volver
+    //Solicitar Ficha
+    //Mostrar Interes
 
     
     @Override
@@ -44,7 +50,7 @@ public class ConsultarPropiedadesAgenteController implements ActionListener{
         switch (e.getActionCommand()){
             case "Consultar":
                 //segun tipo bien lleva a cada controller
-                String filtroBusqueda=(String) this.vista.boxFiltros.getSelectedItem();
+                String filtroBusqueda=(String) this.vista.boxFiltro.getSelectedItem();
                 switch(filtroBusqueda){
                     case "Tipo":
                         //muestra las propiedades con el tipo buscado
@@ -63,15 +69,19 @@ public class ConsultarPropiedadesAgenteController implements ActionListener{
                 }
                 break;
             case "Volver":
-                cerrarConsultaPropiedadAgente(vistaAnterior);//cerrar la vista vuelve a main agente
+                cerrarConsultasClientes(vistaAnterior);//cerrar la vista vuelve a main agente
                 break;
                 
-            case "Modificar":
-                //controlador a modificar propiedad
+            case "Solicitar Ficha":
+                //llama a funcion solicitar Ficha
                 break;
             
-            case "Eliminar":
-                //llamada funcion eliminar propiedad
+            case "Mostrar Interes":
+                //llamada funcion mostrar interes
+                vista.setVisible(false);
+                MostrarInteresController mostrarInteresController=new MostrarInteresController(new MostrarInteresForm(),serverQueryHandler,vista);
+                mostrarInteresController.vista.setVisible(true);
+                mostrarInteresController.vista.setLocationRelativeTo(null);
                 break;
                 
             default:
@@ -80,10 +90,15 @@ public class ConsultarPropiedadesAgenteController implements ActionListener{
     }
     
     /**
-     * volver a main agente
+     * volver a main cliente
      * @param vistaAnterior 
      */
-    public void cerrarConsultaPropiedadAgente(AgenteMainForm vistaAnterior) {
-        vista.cerrarConsultaPropiedadAgente(vistaAnterior);
+    private void cerrarConsultasClientes(ClienteMainForm vistaAnterior) {
+        vista.cerrarConsultasClientes(vistaAnterior);
     }
+    
 }
+
+
+
+

@@ -68,7 +68,7 @@ public class AgregarBienController implements ActionListener{
     }
     
     /**
-     * volver a main admin
+     * volver a main agente
      * @param vistaAnterior 
      */
     public void cerrarAgregarBien(AgenteMainForm vistaAnterior) {

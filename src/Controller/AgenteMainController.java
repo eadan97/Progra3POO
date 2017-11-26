@@ -44,16 +44,16 @@ public class AgenteMainController implements ActionListener{
                 agregarBienController.vista.setLocationRelativeTo(null);
                 break;
             case "Consultar Propiedades":
-//                vista.setVisible(false);
-//                ConsultarPropiedadesAgenteController consultarPropiedadesAgenteController=new ConsultarPropiedadesAgenteController(new ConsultarPropiedadAgenteForm(),serverQueryHandler,vista);
-//                consultarPropiedadesAgenteController.vista.setVisible(true);
-//                consultarPropiedadesAgenteController.vista.setLocationRelativeTo(null);
+                vista.setVisible(false);
+                ConsultarPropiedadesAgenteController consultarPropiedadesAgenteController=new ConsultarPropiedadesAgenteController(new ConsultarPropiedadAgenteForm(),serverQueryHandler,vista);
+                consultarPropiedadesAgenteController.vista.setVisible(true);
+                consultarPropiedadesAgenteController.vista.setLocationRelativeTo(null);
                 break;
             case "Consultar Interesados":
-//                vista.setVisible(false);
-//                ConsultarInteresadosController consultarInteresadosController=new ConsultarInteresadosController(new ConsultarClientesInteresadosForm(),serverQueryHandler,vista);
-//                consultarInteresadosController.vista.setVisible(true);
-//                consultarInteresadosController.vista.setLocationRelativeTo(null);
+                vista.setVisible(false);
+                ConsultarInteresadosController consultarInteresadosController=new ConsultarInteresadosController(new ConsultarClientesInteresadosForm(),serverQueryHandler,vista);
+                consultarInteresadosController.vista.setVisible(true);
+                consultarInteresadosController.vista.setLocationRelativeTo(null);
                 break;              
             case "Cerrar Cesion":
                 //cerrarSesion
